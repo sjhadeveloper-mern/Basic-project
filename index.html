@@ -150,6 +150,49 @@
       text-align: center;
       padding: 15px;
     }
+.in-flex{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:15px;
+}
+    @media (max-width:600px){
+
+      body{
+        height:100%;
+        width:100%;
+      }
+nav{
+  display: none;
+}
+h1{
+ height:30px;
+}
+header{
+  padding:30px;
+ 
+}
+input{
+  width: 200px;
+  border-radius: none;
+
+}
+.in-flex{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ justify-content: center;
+}
+.in-btn{
+  width: 250px;
+background-color: #350231 !important;
+color: yellow !important;
+}
+h2{
+  font-size: 35px !important;
+}
+
+    }
   </style>
 </head>
 
@@ -194,10 +237,13 @@
   <!-- CONTACT -->
   <section class="contact">
     <h3>Contact Us</h3>
-    <input type="text" placeholder="Your Name"><br>
-    <input type="email" placeholder="Your Email"><br>
-    <textarea placeholder="Message"></textarea><br>
-    <button>Send</button>
+    <div class="in-flex">    <input type="text" placeholder="John Doe">
+    <input type="email" placeholder="abc@gmail.com">
+    <textarea placeholder="Message"></textarea>
+     <button class="in-btn">Send</button>
+    </div>
+
+   
   </section>
 
   <!-- FOOTER -->
