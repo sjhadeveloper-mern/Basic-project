@@ -1,256 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>QuickLearn</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickLearn</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    body {
-      background: whitesmoke;
-      color: #333;
-    }
-
-    header {
-      background: rgb(73, 1, 73);
-      color: white;
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header h1 {
-      font-size: 26px;
-    }
-
-    nav a {
-      color: white;
-      margin-left: 25px;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    /* HERO */
-    .hero {
-      height: 90vh;
-      background: linear-gradient(to right, purple, #8f7bff);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .hero h2 {
-      font-size: 50px;
-      margin-bottom: 15px;
-    }
-
-    .hero p {
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
-
-    .hero button {
-      padding: 12px 25px;
-      border: none;
-      background: white;
-      color: #5a4bff;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    /* ABOUT */
-    .about {
-      padding: 60px 20px;
-      text-align: center;
-      background: white;
-    }
-
-    .about h3 {
-      font-size: 30px;
-      margin-bottom: 10px;
-      color: #5a4bff;
-    }
-
-    .about p {
-      max-width: 700px;
-      margin: auto;
-      color: #555;
-    }
-
-    /* FEATURES */
-    .features {
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    .features h3 {
-      color: #5a4bff;
-      margin-bottom: 30px;
-    }
-
-    .cards {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      width: 250px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    /* CONTACT */
-    .contact {
-      background: #5a4bff;
-      color: white;
-      text-align: center;
-      padding: 50px 20px;
-    }
-
-    .contact input, .contact textarea {
-      width: 250px;
-      padding: 10px;
-      margin: 10px;
-      border: none;
-      border-radius: 5px;
-    }
-
-    .contact button {
-      padding: 10px 20px;
-      background: white;
-      color: #5a4bff;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 15px;
-    }
-.in-flex{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap:15px;
-}
-    @media (max-width:600px){
-
-      body{
-        height:100%;
-        width:100%;
-      }
-nav{
-  display: none;
-}
-h1{
- height:30px;
-}
-header{
-  padding:30px;
- 
-}
-input{
-  width: 200px;
-  border-radius: none;
-
-}
-.in-flex{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
- justify-content: center;
-}
-.in-btn{
-  width: 250px;
-background-color: #350231 !important;
-color: yellow !important;
-}
-h2{
-  font-size: 35px !important;
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
 }
 
+body {
+    background: linear-gradient(135deg, #14001f, #4b0082, #7a00cc);
+    color: white;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* HEADER */
+header {
+    background: rgba(10,0,30,0.95);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #d580ff;
+}
+
+/* NAV LINKS */
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffcc00;
+}
+
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: white;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px,5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px,-6px);
+}
+
+/* MOBILE MENU */
+@media(max-width: 768px) {
+    .hamburger {
+        display: flex;
     }
-  </style>
+
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        right: -100%;
+        background: #1a0033;
+        width: 230px;
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        transition: 0.4s;
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 140px 20px;
+}
+
+.hero h1 {
+    font-size: 55px;
+    max-width: 700px;
+    margin: auto;
+    text-shadow: 0 0 25px #bb00ff;
+}
+
+.hero p {
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+/* BUTTON */
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 28px;
+    background: linear-gradient(45deg, yellow, orange);
+    color: black;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    box-shadow: 0 0 15px yellow;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.08);
+}
+
+/* SECTIONS */
+.section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #d580ff;
+}
+
+/* SKILLS GRID */
+.skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.skill-box {
+    padding: 25px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+}
+
+/* CONTACT */
+.contact {
+    max-width: 600px;
+    margin: auto;
+}
+
+.contact input, .contact textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: none;
+}
+
+/* FOOTER */
+footer {
+    background: #0a001a;
+    padding: 60px 20px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    gap: 30px;
+}
+
+.footer-box {
+    max-width: 250px;
+}
+
+.footer-box h3 {
+    margin-bottom: 15px;
+    color: #d580ff;
+}
+
+.footer-box p, .footer-box a {
+    color: #ccc;
+    font-size: 14px;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.footer-box a:hover {
+    color: #ffcc00;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    color: #888;
+    font-size: 13px;
+}
+
+/* SMALL SCREEN FIX */
+@media(max-width: 768px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <h1>QuickLearn</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="./project.html">Projects</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
+<!-- HEADER -->
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">QuickLearn</div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h2>Learn Faster with QuickLearn 🚀</h2>
-    <p>Build skills. Create projects. Grow your future.</p>
-    <button onclick="location.href='./project.html'">Explore Projects</button>
-  </section>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
 
-  <!-- ABOUT -->
-  <section class="about">
-    <h3>About Us</h3>
-    <p>
-      QuickLearn is a modern learning platform where students can build real-world projects
-      and improve their coding skills step by step.
-    </p>
-  </section>
-
-  <!-- FEATURES -->
-  <section class="features">
-    <h3>What We Offer</h3>
-    <div class="cards">
-      <div class="card">🚀 Fast Learning</div>
-      <div class="card">💻 Real Projects</div>
-      <div class="card">📈 Skill Growth</div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
     </div>
-  </section>
+</header>
 
-  <!-- CONTACT -->
-  <section class="contact">
-    <h3>Contact Us</h3>
-    <div class="in-flex">    <input type="text" placeholder="John Doe">
-    <input type="email" placeholder="abc@gmail.com">
-    <textarea placeholder="Message"></textarea>
-     <button class="in-btn">Send</button>
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <h1>Learn Fast, Grow Faster 🚀</h1>
+        <p>Modern learning with real-world projects and practical skills.</p>
+        <a href="project.html" class="btn">View Projects</a>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+    <div class="container">
+        <h2>About Us</h2>
+        <p>QuickLearn helps you master skills quickly with real-world projects and modern learning techniques.</p>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+    <div class="container">
+        <h2>My Skills</h2>
+        <div class="skills">
+            <div class="skill-box">HTML</div>
+            <div class="skill-box">CSS</div>
+            <div class="skill-box">JavaScript</div>
+            <div class="skill-box">Video Editing</div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+    <div class="container contact">
+        <h2>Contact Us</h2>
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+        <textarea rows="4" placeholder="Your Message"></textarea>
+        <a href="#" class="btn">Send Message</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+
+        <div class="footer-box">
+            <h3>QuickLearn</h3>
+            <p>Learn fast with modern skills and real-world projects.</p>
+        </div>
+
+        <div class="footer-box">
+            <h3>Quick Links</h3>
+            <a href="#">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <div class="footer-box">
+            <h3>Contact</h3>
+            <p>Email: support@quicklearn.com</p>
+            <p>Location: India</p>
+        </div>
+
     </div>
 
-   
-  </section>
+    <div class="footer-bottom">
+        © 2026 QuickLearn | Designed by SURAJ JHA
+    </div>
+</footer>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>Powered by SRGCTI</p>
-    <p>Founder: Suraj Jha</p>
-  </footer>
+<script>
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navLinks.classList.toggle("active");
+});
+</script>
 
 </body>
 </html>
